@@ -1,0 +1,81 @@
+BINCNN AND CNN DIGIT RECOGNITION TESTING
+
+----------------------------------------------------------------------------------------------------
+Loading data:
+
+Data loaded!
+
+Using 60000 training examples
+Using 10000 testing examples
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+Evaluating and Evaluating BinCNN:
+
+Initial testing...
+Training...
+Testing...
+
+Training time: 176.526 secs
+
+Iniital accuracy: 8.46
+Training accuracy: 98.187
+Test accuracy: 98.24
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+Evaluating and Evaluating CNN:
+
+Initial testing...
+Training...
+Testing...
+
+Training time: 169.281 secs
+
+Iniital accuracy: 6.04
+Training accuracy: 98.877
+Test accuracy: 98.67
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+Profiling size of objects...
+
+Size of BinCNN: 4061184 bytes
+Size of CNN: 3096088 bytes
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+Profiling memory:
+
+Filename: digit_recognition.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   150   1073.1 MiB   1073.1 MiB           1   @profile
+   151                                         def feedForwardBinCNN(model, data, labels):
+   152   1080.0 MiB      6.9 MiB           1   	model.evaluate(data, labels, verbose=0)
+
+
+Filename: digit_recognition.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   154   1080.0 MiB   1080.0 MiB           1   @profile
+   155                                         def feedForwardCNN(model, data, labels):
+   156   1109.9 MiB     29.9 MiB           1   	model.evaluate(data, labels, verbose=0)
+
+
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+Profiling time:
+
+Avg BinCNN feed forward time for n=25: 2.734
+Avg CNN feed forward time for n=25: 2.067
+----------------------------------------------------------------------------------------------------
+
