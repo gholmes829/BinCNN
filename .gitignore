@@ -1,2 +1,8 @@
-*.pyc
-pycache/
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+
+car/car_data/**
+
+!**/.gitkeep
