@@ -6,50 +6,81 @@ import os
 import re
 import csv
 import cv2
+import numpy as np
 
 import settings
 
-video_files = []
-label_files = []
+class Data:
+    def __init__(self):
+        self.video_files = []
+        self.label_files = []
 
-videos = []
-labels = []
+        self.videos = []
+        self.labels = []
 
-cwd = os.getcwd()
-data_path = os.path.join(cwd, "car_data")
+        self.episodes = []
 
-def get_files():
-    files = os.listdir(data_path)
-    files.remove(".gitkeep")
-    for file in files:
-        if re.match(".*\.avi", file):
-            video_files.append(file)
-        elif re.match(".*\.csv", file):
-            label_files.append(file)
-        else:
-            raise TypeError("File name didn't match any patterns...")
+        self.cwd = os.getcwd()
+        self.data_path = os.path.join(self.cwd, "car_data")
 
-def get_raw_data():
-    for i, file in enumerate(label_files):
-        labels.append([])
-        with open(os.path.join(data_path, file)) as csvfile:
-            reader = csv.reader(csvfile)
-            for row in reader:
-                labels.append(row[1])
-    for i, file in enumerate(video_files):
-        videos.append([])
-        video = cv2.VideoCapture(os.path.join(data_path, file))
-        for j in range(len(labels[i])):
-            retval, img = video.read()
-            videos[i].append(preprocess(img))
-            
-def preprocess(img):
-    img = cv2.resize(img, (settings.img_height, settings.img_width))
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    img = img / 255
-    return img
-    
-def disp_img(img):
-    cv2.imshow('image', img)
-    cv2.waitKey(0)
+    def load_files(self):
+        files = os.listdir(self.data_path)
+        files.remove(".gitkeep")
+        for file in files:
+            if re.match(".*\.avi", file):
+                self.video_files.append(file)
+            elif re.match(".*\.csv", file):
+                self.label_files.append(file)
+            else:
+                raise TypeError("File name didn't match any patterns...")
+
+    def process_data(self):
+        for i, file in enumerate(self.label_files):
+            self.labels.append([])
+            with open(os.path.join(self.data_path, file)) as csvfile:
+                reader = csv.reader(csvfile)
+                for j, row in enumerate(reader):
+                    if j:
+                        self.labels[i].append(float(row[1]))
+            self.labels[i] = np.array(self.labels[i])
+
+        for i, file in enumerate(self.video_files):
+            self.videos.append([])
+            video = cv2.VideoCapture(os.path.join(self.data_path, file))
+
+            for j in range(len(self.labels[i])):
+                retval, img = video.read()
+                self.videos[i].append(self.preprocess(img))
+            self.videos[i] = np.array(self.videos[i])
+        self.episodes = list(zip(*self.get_data()))
+          
+    def get_data(self):
+        return self.videos, self.labels
+        
+    def get_episodes(self):
+        return self.episodes
+        
+    def get_collapsed_data(self, episodes):
+        collapsed_videos = []
+        collapsed_labels = []
+        
+        zipped_episodes = [list(zip(video, labels)) for video, labels in episodes]
+        for episode in zipped_episodes:
+            for frame, label in episode:
+                collapsed_videos.append(frame)
+                collapsed_labels.append(label)
+        
+        return np.array(collapsed_videos), np.array(collapsed_labels)
+          
+    def preprocess(self, img):
+        #disp_img(img)
+        img = cv2.resize(img, settings.img_size_rev)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        img = img / 255
+        #disp_img(img)
+        return img
+        
+    def disp_img(self, img):
+        cv2.imshow('image', img)
+        cv2.waitKey(0)
 
