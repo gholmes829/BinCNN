@@ -73,11 +73,11 @@ class Data:
         return np.array(collapsed_videos), np.array(collapsed_labels)
           
     def preprocess(self, img):
-        #disp_img(img)
+        #self.disp_img(img)
         img = cv2.resize(img, settings.img_size_rev)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         img = img / 255
-        #disp_img(img)
+        #self.disp_img(img)
         return img
         
     def disp_img(self, img):
