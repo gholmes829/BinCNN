@@ -32,7 +32,7 @@ class Data:
             elif re.match(".*\.csv", file):
                 self.label_files.append(file)
             else:
-                raise TypeError("File name didn't match any patterns...")
+                raise TypeError("File name didn't match any patterns:", file)
 
     def process_data(self):
         for i, file in enumerate(self.label_files):
