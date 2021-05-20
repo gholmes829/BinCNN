@@ -3,7 +3,8 @@ MNIST handwritten digit classification with BinCNN.
 """
 
 import os
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+os.environ['TF_XLA_FLAGS'] = '--tf_xla_enable_xla_devices'
+#os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 import numpy as np
 import tensorflow as tf
@@ -118,23 +119,23 @@ def makeCNN():
 
 	return model
 
-def train_and_evaluate(model, trainingData, trainingLabels, testingData, testingLabels, name="model", epochs=6, batch_size=64):
+def train_and_evaluate(model, trainingData, trainingLabels, testingData, testingLabels, name="model", epochs=8, batch_size=128, verbose=1):
 	"""Trains and tests model"""
 	print("-"*100)
 	print("Evaluating and Evaluating " + name + ":")
 	print()
 	print("Initial testing...")
-	initialLoss, initialAccuracy = model.evaluate(testingData, testingLabels, verbose=0)
+	initialLoss, initialAccuracy = model.evaluate(testingData, testingLabels, verbose=verbose)
 
 	# training
 	print("Training...")
 	timer = time()
-	history = model.fit(trainingData, trainingLabels, batch_size=batch_size, epochs=epochs, verbose=0)
+	history = model.fit(trainingData, trainingLabels, batch_size=batch_size, epochs=epochs, verbose=verbose)
 	elapsed = time() - timer
 
 	print("Testing...")
-	trainingLoss, trainingAccuracy = model.evaluate(trainingData, trainingLabels, verbose=0)	
-	testLoss, testAccuracy = model.evaluate(testingData, testingLabels, verbose=0)
+	trainingLoss, trainingAccuracy = model.evaluate(trainingData, trainingLabels, verbose=verbose)	
+	testLoss, testAccuracy = model.evaluate(testingData, testingLabels, verbose=verbose)
 
 	print("\nTraining time: " + str(round(elapsed, 3)) + " secs")
 
@@ -232,7 +233,7 @@ def main():
 	print("-"*100)
 
 	print()
-	#plt.show()  # display neural network performance
+	plt.show()  # display neural network performance
 
 if __name__ == "__main__":
 	main()

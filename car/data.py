@@ -7,6 +7,7 @@ import re
 import csv
 import cv2
 import numpy as np
+from random import randint
 
 import settings
 
@@ -17,7 +18,10 @@ class Data:
 
         self.videos = []
         self.labels = []
-
+        
+        self.shuffled_videos = []
+        self.shuffled_labels = []
+        
         self.episodes = []
 
         self.cwd = os.getcwd()
@@ -53,7 +57,9 @@ class Data:
                 self.videos[i].append(self.preprocess(img))
             self.videos[i] = np.array(self.videos[i])
         self.episodes = list(zip(*self.get_data()))
-          
+        
+        # VIDEOS IS COMPRISED OF EPISODES, NOT RAW INDIVIDUAL DATA, MIGHT BE OTHER ISSUES TOO
+		 
     def get_data(self):
         return self.videos, self.labels
         
@@ -71,6 +77,30 @@ class Data:
                 collapsed_labels.append(label)
         
         return np.array(collapsed_videos), np.array(collapsed_labels)
+        
+    def get_shuffled_data(self, videos, labels):
+        n = sum([len(video) for video in videos])
+        m = len(videos[0])
+        indices = list(range(n))
+        self.shuffled_videos = [0 for i in range(n)]
+        self.shuffled_labels = [0 for i in range(n)]
+        for i in range(n):        
+            rand_index = randint(0, len(indices)-1)
+            j = indices.pop(rand_index)
+            #print(n, i, rand_index, j, j//m, j%m)
+            #print(len(self.shuffled_videos), len(self.videos), len(self.labels))
+            #print(len(self.videos[0]), len(self.labels[0]))
+            self.shuffled_videos[i] = videos[j//m][j%m]
+            self.shuffled_labels[i] = labels[j//m][j%m]
+        #hash([])
+        #test = [l for label in self.labels for l in label]
+        #print(set(list(self.shuffled_labels)) == set(list(test)))
+        #print(len(self.shuffled_labels) == len(test))
+        #print(sum(self.shuffled_labels) == sum(test))
+        self.shuffled_videos = np.array(self.shuffled_videos)
+        self.shuffled_labels = np.array(self.shuffled_labels)
+	
+        return self.shuffled_videos, self.shuffled_labels
           
     def preprocess(self, img):
         #self.disp_img(img)
