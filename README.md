@@ -8,3 +8,5 @@ Perform tasks with binary convolutional neural networks! Currently under develop
 * Run with `python3 <desired script>`
 
 _Note: Windows users may need to run commands with `python` instead of `python3`_
+
+Contact me if interested in seeing self driving car data.
