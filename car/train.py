@@ -1,5 +1,5 @@
 """
-
+Training and analyzing networks.
 """
 
 import os
@@ -45,6 +45,7 @@ def plotCosts(bin_cnn_loss, cnn_loss, name):
     #axes.grid(alpha=0.25, ls="--")
     
 def render_path(angles):
+	"""Displays angle data as track representation. Result doesn't look right, but may not be directly tranlatable as hopded..."""
     mapping = {
         0: "red",
         1: "red",
@@ -68,7 +69,6 @@ def render_path(angles):
             heading -= limit * np.radians(angle)
             end = (start[0] + np.cos(heading), start[1] + np.sin(heading))
             pos.append(end)
-            #print(start, end, angle)
             plt.plot((start[0], end[0]), (start[1], end[1]), color=mapping[(i%1000)//100])
         plt.title(str(limit))
     plt.show()
@@ -95,14 +95,12 @@ def train_and_evaluate(model, trainingData, trainingLabels, testingData, testing
 
     print("\nTraining time: " + str(round(elapsed, 3)) + " secs")
 
-    #loss = np.array([initialLoss] + history.history["loss"])
     loss = history.history["loss"]
-    #print(history.history)
-    #accuracy = np.array([initialAccuracy] + history.history["root_mean_squared_error"])
     print("-"*100)
     return loss
     
 def BinCNN():
+	"""Can experiment with model"""
     kwargs = {
         "input_quantizer": "ste_sign",
         "kernel_quantizer": "ste_sign",
@@ -153,6 +151,7 @@ def BinCNN():
     return model
 
 def CNN():
+	"""Can experiment with model"""
     model = tf.keras.models.Sequential()
     model.add(tf.keras.layers.Conv2D(16, (3, 3), input_shape=(*settings.img_size, 1), activation='relu', use_bias=True))
     model.add(tf.keras.layers.MaxPooling2D((2, 2)))
@@ -195,9 +194,6 @@ def main():
     data = Data()
     data.load_files()
     data.process_data()
-    #episodes = data.get_episodes()
-    
-    #num_episodes = len(episodes)
     
     shuffled_data, shuffled_labels = data.get_shuffled_data(*data.get_data())
     
@@ -207,9 +203,6 @@ def main():
     
     training_data, training_labels = shuffled_data[:num_training], shuffled_labels[:num_training]
     testing_data, testing_labels = shuffled_data[num_training:], shuffled_labels[num_training:]
-    #training_data, training_labels = data.get_data()
-    #testing_data, testing_labels = data.get_collapsed_data(episodes[7:])
-    #training_data, training_labels = data.get_shuffled_data(training_data[:7], training_labels[:7])
     
     print("Training size:", num_training)
     print("Testing size:", num_testing)
@@ -220,22 +213,14 @@ def main():
     print("Data loaded!")
     
     # render test
-    #render_path(training_labels)
-    #return
+    render_path(training_labels)
+    
     cwd = os.getcwd()
     model_path = os.path.join(cwd, "models")
-    
-    # DEFINING ARCHITECTURE
-    
-
 
     bin_cnn = BinCNN()
     cnn = CNN()
-    
 
-                  
-    # tf.keras.models.summary(model)
-    
     # EVALUATING
     bin_cnn_loss = train_and_evaluate(bin_cnn, training_data, training_labels, testing_data, testing_labels, name="BinCNN")
     cnn_loss = train_and_evaluate(cnn, training_data, training_labels, testing_data, testing_labels, name="CNN")

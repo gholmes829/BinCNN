@@ -1,10 +1,8 @@
 """
-
+Global perimeters.
 """
 
-#img_width = 180
-#img_height = 240
-
+# sizes to resize images to in pre-processing
 img_width = 180
 img_height = 240
 

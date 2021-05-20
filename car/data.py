@@ -1,5 +1,5 @@
 """
-
+Loading, preprocessing, and formatting data.
 """
 
 import os
@@ -57,8 +57,6 @@ class Data:
                 self.videos[i].append(self.preprocess(img))
             self.videos[i] = np.array(self.videos[i])
         self.episodes = list(zip(*self.get_data()))
-        
-        # VIDEOS IS COMPRISED OF EPISODES, NOT RAW INDIVIDUAL DATA, MIGHT BE OTHER ISSUES TOO
 		 
     def get_data(self):
         return self.videos, self.labels
@@ -87,22 +85,14 @@ class Data:
         for i in range(n):        
             rand_index = randint(0, len(indices)-1)
             j = indices.pop(rand_index)
-            #print(n, i, rand_index, j, j//m, j%m)
-            #print(len(self.shuffled_videos), len(self.videos), len(self.labels))
-            #print(len(self.videos[0]), len(self.labels[0]))
             self.shuffled_videos[i] = videos[j//m][j%m]
             self.shuffled_labels[i] = labels[j//m][j%m]
-        #hash([])
-        #test = [l for label in self.labels for l in label]
-        #print(set(list(self.shuffled_labels)) == set(list(test)))
-        #print(len(self.shuffled_labels) == len(test))
-        #print(sum(self.shuffled_labels) == sum(test))
         self.shuffled_videos = np.array(self.shuffled_videos)
         self.shuffled_labels = np.array(self.shuffled_labels)
 	
         return self.shuffled_videos, self.shuffled_labels
           
-    def preprocess(self, img):
+    def preprocess(self, img):  # uncommnet comments to view before and after
         #self.disp_img(img)
         img = cv2.resize(img, settings.img_size_rev)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
