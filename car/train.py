@@ -22,27 +22,15 @@ def plotCosts(bin_cnn_loss, cnn_loss, name):
     figs, axes = plt.subplots(1)
     axes.set_title("Training Evalutation: " + name)
 
-    #axes[0].plot(accuracy, c="cyan")
-    #axes[0].plot(accuracy, "o", c="cyan")
-
-    #axes[0].set_ylabel("Percent Correct")
-    #axes[0].set_title("Accuracy")
-
-    axes.plot(bin_cnn_loss, c="red", label="BinCNN")
-    #axes.plot(bin_cnn_loss, "o", c="red")
-    
+    axes.plot(bin_cnn_loss, c="red", label="BinCNN")   
     axes.plot(cnn_loss, c="green", label="CNN")
-    #axes.plot(cnn_loss, "o", c="green")
-
 
     axes.set_ylabel("MSE")
-    #axes.set_title("Loss")
     
     plt.xlabel("Epoch")
 
     axes.grid(alpha=0.3, ls="--")
     axes.legend()
-    #axes.grid(alpha=0.25, ls="--")
     
 def render_path(angles):
 	"""Displays angle data as track representation. Result doesn't look right, but may not be directly tranlatable as hopded..."""
