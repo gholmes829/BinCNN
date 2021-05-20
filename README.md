@@ -1,6 +1,5 @@
 # BinCNN
-Perform tasks with binary convolutional neural networks! Currently under development...
-
+Perform tasks with binary convolutional neural networks (BinCNN)! Currently have examples with MNIST handwritten digit recognition and small self driving car/ rovers. 
 ## Get started:
 * Download Python 3.8+ `https://www.python.org/downloads/`
 * Clone repository `git clone https://github.com/gholmes829/BinCNN.git`
