@@ -18,5 +18,3 @@ Analysis on BinCNNs for self driving cars:
 ![car_costs](https://user-images.githubusercontent.com/60802511/118946296-da244e00-b91b-11eb-9417-7432e1f2ab7a.png)
 
 ![model_summary](https://user-images.githubusercontent.com/60802511/118946310-dd1f3e80-b91b-11eb-9b67-c90b4c431a1a.PNG)
-
-Contact me if interested in seeing self driving car data.
