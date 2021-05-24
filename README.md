@@ -12,6 +12,8 @@ See [https://github.com/larq/larq](https://github.com/larq/larq), [https://docs.
 
 _Note: Windows users may need to run commands with `python` instead of `python3`_
 
+Default training parameters expect GPU availability. It will still work with just CPU but may take a while...
+
 I also found it behooving to create a virtual environment with venv; however, this is by no means necessary.
 
 ## Car steering:
