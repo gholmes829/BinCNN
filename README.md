@@ -1,5 +1,5 @@
 # BinCNN
-Perform tasks with binary convolutional neural networks (BinCNN)! Currently have examples with MNIST handwritten digit recognition and small self driving car/ rovers. 
+Perform tasks with binary convolutional neural networks (BinCNN)! I currently have two examples with. The first attempts to classify MNIST handwritten digit and the second attempts to make steering angle predictions for real time small self driving cars. 
 
 See [https://github.com/larq/larq](https://github.com/larq/larq), [https://docs.larq.dev/](https://docs.larq.dev/), and [https://arxiv.org/pdf/2011.09398.pdf](https://arxiv.org/pdf/2011.09398.pdf) to learn more about BinCNNs!
 
