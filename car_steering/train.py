@@ -182,7 +182,7 @@ def CNN():
                   )
     return model
     
-def main():
+def main() -> None:
     """
         Main 'driver' of module.
     """
