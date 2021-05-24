@@ -4,7 +4,7 @@ Design, train, and analyze BinCNN networks and their CNN counterparts. Expects G
 
 import os
 #os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"  # comment this to allow verbose info and warnings
-os.environ['TF_XLA_FLAGS'] = '--tf_xla_enable_xla_devices'
+os.environ['TF_XLA_FLAGS'] = '--tf_xla_enable_xla_devices'  # for GPU training
 
 import larq as lq
 import tensorflow as tf
