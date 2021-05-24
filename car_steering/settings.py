@@ -1,5 +1,5 @@
 """
-Global perimeters.
+Contains global perameters. Pay heed to keep the image aspect ratio the same.
 """
 
 # sizes to resize images to in pre-processing
