@@ -25,7 +25,7 @@ class Data:
         self.episodes = []
 
         self.cwd = os.getcwd()
-        self.data_path = os.path.join(self.cwd, "car_data")
+        self.data_path = os.path.join(self.cwd, "data")
 
     def load_files(self):
         files = os.listdir(self.data_path)

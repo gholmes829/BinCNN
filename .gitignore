@@ -3,6 +3,6 @@ __pycache__/
 *$py.class
 .venv/
 
-car/car_data/**
+car_steering/data/**
 
 !**/.gitkeep
