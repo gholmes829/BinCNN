@@ -13,10 +13,13 @@ _Note: Windows users may need to run commands with `python` instead of `python3`
 
 I also found it behooving to create a virtual environment with venv; however, this is by no means necessary.
 
+## Car steering:
 The `car_steering` package contains modules pertaining to training BinCNNs for predicting car steering given image input. Once in this directory, changing values in `settings.py` allows you to edit high level settings such as image size. `data.py` is responsible for reading in, storing, and preprocessing the data. Data is preprocessed by converting images to black and white and by reducing their resolution without altering their aspect ratios. In particular, it allows a caller to retrieve the preprocessed data by training episode, retrieve all episodes, or retrieve randomly shuffled data. Finally, `train.py` contains the architectural description of the BinCNN and CNN. Additionally, this module contains both methods to train these networks and functions to an analyze their performance. Calling `python3 train.py` loads in the data, preprocesses it, trains the networks, and provides plots illustrating their performances. While not implemented yet, the `models` directory is intended to be adapted to store saved trained models. While the `data` folder is unsurprisingly meant to containt the training data, the training data is currently not made publically availble. Please contact me if you are interested in obtaining access to the training data.
 
+## Digit recognition:
 Similairly, the `digit_recognition` package contains modules for designing and training BinCNNs for recognizing handwritten digits from  the MNIST dataset ([http://yann.lecun.com/exdb/mnist/](http://yann.lecun.com/exdb/mnist/)). `digit_recognition.py` contains both the data processing and neural network training pipelines. Calling this module via `python3 digit_recognition.py` thus loads in the data, preprocesses it, trains the networks, and provides plots illustrating their performances.
 
+## Notable figures:
 I have included several of the figures depicting results from training the networks. These figures and others can be found in their respective `figures` directories.
 
 Analysis on BinCNNs for handwritten digits:
