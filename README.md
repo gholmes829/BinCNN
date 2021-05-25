@@ -26,9 +26,11 @@ Similairly, the `digit_recognition` package contains modules for designing and t
 I have included several of the figures depicting results from training the networks. These figures and others can be found in their respective `figures` directories.
 
 Analysis on BinCNNs for handwritten digits:
-![digit_bin_cnn](https://user-images.githubusercontent.com/60802511/118946215-c7117e00-b91b-11eb-8001-b13067e7ef1d.png)
+<img src="https://user-images.githubusercontent.com/60802511/118946215-c7117e00-b91b-11eb-8001-b13067e7ef1d.png" alt="costs1" width="75%" style="text-align: left"/>
 
 Analysis on BinCNNs for self driving cars:
-![car_costs](https://user-images.githubusercontent.com/60802511/118946296-da244e00-b91b-11eb-9417-7432e1f2ab7a.png)
+<img src="https://user-images.githubusercontent.com/60802511/118946296-da244e00-b91b-11eb-9417-7432e1f2ab7a.png" alt="costs2" width="75%" style="text-align: left"/>
 
-![model_summary](https://user-images.githubusercontent.com/60802511/118946310-dd1f3e80-b91b-11eb-9b67-c90b4c431a1a.PNG)
+
+<img src="https://user-images.githubusercontent.com/60802511/118946310-dd1f3e80-b91b-11eb-9b67-c90b4c431a1a.PNG" alt="specs1" width="75%" style="text-align: left"/>
+
