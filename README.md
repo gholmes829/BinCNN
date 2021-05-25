@@ -1,8 +1,8 @@
 # BinCNN
 ## Introduction:
-Perform tasks with binary convolutional neural networks (BinCNN)! I currently have two examples. The first attempts to classify MNIST handwritten digit and the second attempts to make steering angle predictions for real time small self driving cars. The BinCNN performed well at classifying MNSIT handwritten digits. It struggled at fitting the training data for steering angle regression and thus had poor test set performance.
+Perform tasks with binary convolutional neural networks (BinCNN)! I currently have two examples based on the Larq library [https://github.com/larq/larq](https://github.com/larq/larq). The first attempts to classify MNIST handwritten digit and the second attempts to make steering angle predictions for real time small self driving cars. The BinCNN performed well at classifying MNSIT handwritten digits. It struggled at fitting the training data for steering angle regression and thus had poor test set performance.
 
-See [https://github.com/larq/larq](https://github.com/larq/larq), [https://docs.larq.dev/](https://docs.larq.dev/), and [https://arxiv.org/pdf/2011.09398.pdf](https://arxiv.org/pdf/2011.09398.pdf) to learn more about BinCNNs!
+See [https://docs.larq.dev/](https://docs.larq.dev/) and [https://arxiv.org/pdf/2011.09398.pdf](https://arxiv.org/pdf/2011.09398.pdf) to learn more about BinCNNs!
 
 ## Get started:
 * Download Python 3.8+ [https://www.python.org/downloads/](https://www.python.org/downloads/)
